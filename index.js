@@ -14,6 +14,11 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+
+app.get('/', (req, res)=> {
+    return res.send('flutterwave solutions')
+})
+
 app.post('/fees', async (req, res) => {
     let feeConfigurationSpec = req.body.FeeConfigurationSpec
     try {
@@ -111,8 +116,9 @@ app.post('/compute-transaction-fee', async (req, res) => {
     }
 })
 
+console.log('after routes')
 
-let PORT = process.env.PORT || 8080
+PORT = process.env.PORT || 8080
 
 
 app.listen(PORT, () => console.log('server running on ' + PORT))
