@@ -52,6 +52,7 @@ app.post('/compute-transaction-fee', async (req, res) => {
         // Transaction amount must be non-negative
         if (transactionAmount < 0) throw new Error('invalid transaction amount')
 
+        // Select all applicable configs
         let possibleConfigs = await FeeConfigSpec.find({
             fee_locale: {
                 $in: [locale, '*']
@@ -68,9 +69,12 @@ app.post('/compute-transaction-fee', async (req, res) => {
         // no config found
         if (!possibleConfigs.length) throw new Error("No fee configuration for this transaction")
 
+        // select most specific config
         activeConfig = possibleConfigs.pop()
+
         appliedFeeID = activeConfig.fee_id
 
+        // calc appliedFeeValue based on fee type
         if (activeConfig.fee_type === 'FLAT') {
             appliedFeeValue = parseFLoat(activeConfig.fee_value)
         } else if (activeConfig.fee_type === 'PERC') {
