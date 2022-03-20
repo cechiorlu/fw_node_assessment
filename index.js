@@ -7,13 +7,14 @@ const FeeConfigSpec = require('./models/FeeConfigSpec')
 
 dotenv.config()
 
-connectDB()
+// connectDB()
 
 app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }));
 
+console.log('app start')
 
 app.get('/', (req, res)=> {
     return res.send('flutterwave solutions')
