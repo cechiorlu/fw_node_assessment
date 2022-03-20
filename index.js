@@ -7,7 +7,7 @@ const FeeConfigSpec = require('./models/FeeConfigSpec')
 
 dotenv.config()
 
-// connectDB()
+connectDB()
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -119,7 +119,7 @@ app.post('/compute-transaction-fee', async (req, res) => {
 
 console.log('after routes')
 
-PORT = process.env.PORT || 8080
+PORT = process.env.PORT || 3000
 
 
 app.listen(PORT, () => console.log('server running on ' + PORT))
