@@ -119,7 +119,7 @@ app.post('/compute-transaction-fee', async (req, res) => {
 
 console.log('after routes')
 
-PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 
 app.listen(PORT, () => console.log('server running on ' + PORT))
