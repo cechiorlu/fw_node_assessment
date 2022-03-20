@@ -68,7 +68,7 @@ function compare(a,b){
 
 function parseFeeConfigSpec(string) {
 
-    if (typeof(string) !== string) throw new Error('invalid config specification')
+    if (typeof(string) !== 'string') throw new Error('invalid config specification')
 
     let config = string.split("\n")
 
